@@ -24,6 +24,9 @@ public class BigBoid : MonoBehaviour
     public float slowingDistance = 80;
 
     public Path path;
+
+    public Path path_take_off;
+    
     public bool pathFollowingEnabled = false;
     public float waypointDistance = 3;
 
