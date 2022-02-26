@@ -21,3 +21,6 @@ Events Summary
 10. Guns on the wayship may be implemented to shoot at enemy jets from the sea.
 11. The Heroes will win and the remaining jets will land on the warship.
 12. End
+
+
+![plot](./storyboar/1-take_off.png)
