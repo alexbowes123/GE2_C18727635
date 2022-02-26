@@ -35,10 +35,10 @@ STORYBOARD
 5. The enemies chase the hero in the sky.
 ![1-hero jet on ](/storyboard/5-3_enemies_chase_1_leader.png)
 6. The enemies begin to shoot homing missiles at the hero.
-![1-hero jet on ](/storyboard/6-missile_chase.JPEG)
+![1-hero jet on ](/storyboard/6-miss.png)
 7. Hero attempts to escape the enemies by gaining altitude and flying above clouds.
-![1-hero jet on ](/storyboard/7-escape.JPEG)
+![1-hero jet on ](/storyboard/7-cloud.png)
 8. More good guys and bad guys arrive and a full dog fight takes place.
-![1-hero jet on ](/storyboard/8-battle.JPEG)
+![1-hero jet on ](/storyboard/8-dog.png)
 9. FINAL - Heroes win and come in for a landing on the carrier.
 ![1-hero jet on ](/storyboard/final-landing.png)
