@@ -1,13 +1,13 @@
-GE2-TopGunBattleAssignment
+# GE2-TopGunBattleAssignment
 
 
-Description 
+# Description 
 - Alexander Bowes
 - C18727635 
 - TU856
 - A recreation of the famous music video from the movie Top Gun. This video shows a fighter jet on a warship taking off and then battling enemy jets while the song Danger Zone plays.
 
-Events Summary
+# Events Summary
 
 1. Hero Jets takes off from Warship/ Music starts
 2. Hero Jets gains altitude and perform movements above the ship
@@ -22,7 +22,7 @@ Events Summary
 11. The Heroes will win and the remaining jets will land on the warship.
 12. End
 
-STORYBOARD
+# STORYBOARD
 
 1. Scene begins with hero jet preparing to take off.
 ![1-hero jet on ](/storyboard/1-take_off.png)
@@ -42,3 +42,18 @@ STORYBOARD
 ![1-hero jet on ](/storyboard/8-dog.png)
 9. FINAL - Heroes win and come in for a landing on the carrier.
 ![1-hero jet on ](/storyboard/final-landing.png)
+
+
+# Expanding on idea
+If there is time or the project seems a bit empty, I may add in a sci fi element and add in aliens that attack the jets if that is alright.
+
+# Models
+The models currently being used will be replaced over time as the author creates new ones in Blender. As of week 6, the models used are taken from the asset store.
+
+# Resources
+
+## Models
+https://assetstore.unity.com/packages/3d/vehicles/air/navy-planes-and-carrier-pack-170259
+
+## Video for idea
+https://www.youtube.com/watch?v=kUsFWO08CO0
