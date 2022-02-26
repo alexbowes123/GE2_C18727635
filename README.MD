@@ -22,5 +22,23 @@ Events Summary
 11. The Heroes will win and the remaining jets will land on the warship.
 12. End
 
+STORYBOARD
 
-![plot](/storyboard/1-take_off.png)
+1. Scene begins with hero jet preparing to take off.
+![1-hero jet on ](/storyboard/1-take_off.png)
+2. Hero jet flies up into the sky above the sea.
+![1-hero jet on ](/storyboard/2-take_off.png)
+3. Hero wanders through the sky.
+![1-hero jet on ](/storyboard/3-leader_wanders.png)
+4. Enemy jets spot the hero from a distance and 3 bad guys take off to chase the hero.
+![1-hero jet on ](/storyboard/4-3_enemy_jets_take_off.png)
+5. The enemies chase the hero in the sky.
+![1-hero jet on ](/storyboard/5-3_enemy_jets_chase_1_leader.png)
+6. The enemies begin to shoot homing missiles at the hero.
+![1-hero jet on ](/storyboard/6-missile_chase.png)
+7. Hero attempts to escape the enemies by gaining altitude and flying above clouds.
+![1-hero jet on ](/storyboard/7-escape.png)
+8. More good guys and bad guys arrive and a full dog fight takes place.
+![1-hero jet on ](/storyboard/8-battle.png)
+9. FINAL - Heroes win and come in for a landing on the carrier.
+![1-hero jet on ](/storyboard/final-landing.png)
