@@ -23,4 +23,4 @@ Events Summary
 12. End
 
 
-![plot](./storyboar/1-take_off.png)
+![plot](/storyboard/1-take_off.png)
