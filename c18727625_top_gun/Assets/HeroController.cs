@@ -4,15 +4,12 @@ using UnityEngine;
 
 class TakeOffState: State
 {
-    Vector3 attackPos;
-
-
    
     public override void Enter()
     {
         Debug.Log("Hi I'm in takeoff!");
-        //set path to takeoff
-        //set path following to on
+        Debug.Log("state is "+owner.GetComponent<StateMachine>().currentState);
+        owner.GetComponent<FollowPath>().enabled = true;
      
     }
     public override void Exit()
@@ -30,6 +27,10 @@ class TakeOffState: State
 
         // change to wander behaviour
        
+       
+
+      
+       
     }
 }
 
@@ -39,6 +40,7 @@ class WanderState: State
     public override void Enter()
     {
         owner.GetComponent<NoiseWander>().enabled = true;
+        owner.GetComponent<Constrain>().enabled = true;
         Debug.Log("Hi I'm in wander!");
      
     }
@@ -71,10 +73,48 @@ public class HeroController : MonoBehaviour
 
     }
 
+    IEnumerator LandingGear()
+    {
+        GameObject leftBreak = transform.Find("Rafale 7").gameObject;
+        GameObject leftWheel = transform.Find("Rafale 18").gameObject;
+
+        GameObject RightBreak = transform.Find("Rafale 6").gameObject;
+        GameObject RightWheel = transform.Find("Rafale 15").gameObject;
+        
+        while(true)
+        {
+            if((GetComponent<StateMachine>().currentState).ToString() == "TakeOffState")
+            {
+                Debug.Log("Retracting..");
+
+
+               
+                //move the landing gears realtive to hero parent until they are horizontal
+            }
+            else if((GetComponent<StateMachine>().currentState).ToString() == "WanderState")
+            {
+                Debug.Log("Done retracting!");
+
+                Destroy(leftWheel);
+                Destroy(leftBreak);
+                yield break;
+            }
+
+            yield return new WaitForSeconds(1.0f);
+
+
+        }
+       
+    }
+
+
+    
+
 
     void Start()
     {
         GetComponent<StateMachine>().ChangeState(new TakeOffState());
+        StartCoroutine(LandingGear());
     }
 
     // Update is called once per frame
