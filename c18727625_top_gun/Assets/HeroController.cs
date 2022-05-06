@@ -85,7 +85,7 @@ public class HeroController : MonoBehaviour
         {
             if((GetComponent<StateMachine>().currentState).ToString() == "TakeOffState")
             {
-                Debug.Log("Retracting..");
+                // Debug.Log("Retracting..");
 
 
                
@@ -93,7 +93,7 @@ public class HeroController : MonoBehaviour
             }
             else if((GetComponent<StateMachine>().currentState).ToString() == "WanderState")
             {
-                Debug.Log("Done retracting!");
+                // Debug.Log("Done retracting!");
 
                 Destroy(leftWheel);
                 Destroy(leftBreak);
