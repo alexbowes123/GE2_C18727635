@@ -17,7 +17,10 @@ class TakeOffState: State
     }
     public override void Exit()
     {   
-        //leave take off state
+        //leave follow path behaviour after taking off
+
+        owner.GetComponent<FollowPath>().enabled = false;
+        Debug.Log("BYE TAKEOFF!");
        
     }
 
@@ -35,6 +38,7 @@ class WanderState: State
    
     public override void Enter()
     {
+        owner.GetComponent<NoiseWander>().enabled = true;
         Debug.Log("Hi I'm in wander!");
      
     }
@@ -61,10 +65,8 @@ public class HeroController : MonoBehaviour
     {
         if(col.gameObject.name == "change_path")
         {
-            Debug.Log("Hi change_path from controller!");
-            GetComponent<FollowPath>().enabled = false;
+            
             GetComponent<StateMachine>().ChangeState(new WanderState());
-          
         }
 
     }
