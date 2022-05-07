@@ -333,6 +333,7 @@
 "Assets/Fighter.cs"
 "Assets/FollowPath.cs"
 "Assets/GenerateInfinite.cs"
+"Assets/GenerateWaves.cs"
 "Assets/HeroController.cs"
 "Assets/MeshGenerator.cs"
 "Assets/Missile.cs"

@@ -32,7 +32,7 @@ public class Missile : MonoBehaviour
 
     public IEnumerator Homing()
     {
-        while(Vector3.Distance(target.transform.position, transform.position) > 0.3f)
+        while(Vector3.Distance(target.transform.position, transform.position) > 0.6f)
         {
             // Debug.Log(transform.name +"is at "+transform.position);
             transform.position += (target.transform.position - transform.position).normalized * speed * Time.deltaTime;

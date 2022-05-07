@@ -23,9 +23,7 @@ public class GenerateInfinite : MonoBehaviour
 
 
 
-    public GameObject objectToSpawn; //cactus game object
-    public int numCacti = 10;
-    public float theta = (2.0f * Mathf.PI) /10;  //angle between each cactus
+
    
 
     [SerializeField] private Vector3 _Rotation;
@@ -36,8 +34,8 @@ public class GenerateInfinite : MonoBehaviour
 
     int planeSize = 10; // each tile is 10 away from the previous tile
 
-    int halfTilesX = 5; //radius of how many tiles around the player
-    int halfTilesZ = 5;
+    int halfTilesX = 10; //radius of how many tiles around the player
+    int halfTilesZ = 10;
 
     Vector3 startPos; //keep track of where player is/was
 
@@ -76,61 +74,10 @@ public class GenerateInfinite : MonoBehaviour
                 
             }
         }  
-        SpawnObject(); //spawn cacti when the game starts
+        // SpawnObject(); //spawn cacti when the game starts
        
     }
 
-    private void SpawnObject(){
-
-
-        for(int c =0; c < numCacti; c++){
-
-            //get the angle between each cacti
-            float radians = 2 * Mathf.PI/numCacti * c;
-
-            //instnatiate the cacti at the position
-            GameObject toPlaceObject = Instantiate(objectToSpawn, 
-            ObjectSpawnLocation(c, radians),
-            Quaternion.identity);
-         
-
-            //each object will point to the center of the spawn circle
-            Vector3 pointTo = new Vector3(0,3.6f,0);
-            toPlaceObject.transform.LookAt(pointTo);
-
-            // toPlaceObject.AddComponent<Rigidbody>();
-            // toPlaceObject.constraints = RigidbodyConstraints.FreezePosition;
-
-            Quaternion target = Quaternion.Euler(90, 0, 0);  
-        }
-    }
-
-     private Vector3 ObjectSpawnLocation (int c, float radians) {                             //spawn objects in a circle
-
-        float angle = theta * c; //get angle between 2 objs
-
-        float circleX = Mathf.Sin(radians);
-        float circleZ = Mathf.Cos(radians);
-    
-  
-        //get position of the cactus 
-        Vector3 newPos = new Vector3 (
-            circleX,
-            0,
-            circleZ
-        );
-
-        Debug.Log("Angle: "+angle);
-
-        Vector3 spawnCenter = new Vector3 (0, 3.6f, 0); //the center of ring
-
-        var spawnPos = spawnCenter + newPos * radius; 
-        //each cacti will point to the starting position (the player when the game starts)
-        this.transform.LookAt(spawnCenter);
-
-        return spawnPos;
-
-    }
 
     // Update is called once per frame
     void Update()
