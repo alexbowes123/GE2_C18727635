@@ -1,1 +1,0 @@
-Temp/ScriptUpdater/325267976/652054547_HeroController.cs => Assets/HeroController.cs

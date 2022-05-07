@@ -45,18 +45,28 @@ public class AttackState : State
 
     public override void Think()
     {
-        // Vector3 toEnemy = owner.GetComponent<Fighter>().enemy.transform.position - owner.transform.position; 
-        // if (Vector3.Angle(owner.transform.forward, toEnemy) < 45 && toEnemy.magnitude < 30)
-        // {
-        //     // GameObject bullet = GameObject.Instantiate(owner.GetComponent<Fighter>().bullet, owner.transform.position + owner.transform.forward * 2, owner.transform.rotation);
-        //     // owner.GetComponent<Fighter>().ammo --;
-        // }        
-        // if (Vector3.Distance(
-        //     owner.GetComponent<Fighter>().enemy.transform.position,
-        //     owner.transform.position) < 10)
-        // {
-        //     // owner.ChangeState(new FleeState());
-        // }
+        Vector3 toEnemy = owner.GetComponent<Fighter>().enemy.transform.position - owner.transform.position; 
+        if (Vector3.Angle(owner.transform.forward, toEnemy) < 45 && toEnemy.magnitude < 60 && owner.GetComponent<Fighter>().ammo > 0)
+        {
+          
+
+            GameObject bullet = GameObject.Instantiate(owner.GetComponent<Fighter>().bullet, owner.transform.position + owner.transform.forward * 2, owner.transform.rotation);
+            bullet.transform.parent = owner.transform;
+            bullet.GetComponent<Missile>().target = owner.GetComponent<Fighter>().enemy;
+            // bullet.transform.Rotate(0,90,90);
+            bullet.transform.Rotate(90,0,0);
+
+            Debug.Log("ammo is" +owner.GetComponent<Fighter>().ammo);
+
+
+            owner.GetComponent<Fighter>().ammo --;
+        }        
+        if (Vector3.Distance(
+            owner.GetComponent<Fighter>().enemy.transform.position,
+            owner.transform.position) < 10)
+        {
+            // owner.ChangeState(new FleeState());
+        }
 
     }
 
@@ -85,7 +95,10 @@ public class BadGuyController : MonoBehaviour
         
 
         //TAKE OFF 
+        // GetComponent<FollowPath>().enabled = false; //remove and swtich on take off
+
         GetComponent<StateMachine>().ChangeState(new VTakeOffState());
+         
         
     }
 
