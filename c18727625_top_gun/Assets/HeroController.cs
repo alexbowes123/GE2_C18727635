@@ -70,7 +70,20 @@ public class HeroController : MonoBehaviour
             
             GetComponent<StateMachine>().ChangeState(new WanderState());
         }
-
+    
+        else if (col.tag == "Missile")
+        {
+            // if (GetComponent<Fighter>().health > 0)
+            // {            
+            //     GetComponent<Fighter>().health --;
+            // }
+            // Destroy(c.gameObject);
+            // if (GetComponent<StateMachine>().currentState.GetType() != typeof(Dead))
+            // {
+            //     GetComponent<StateMachine>().ChangeState(new DefendState());    
+            // }
+            Debug.Log("Damage taken!");
+        }
     }
 
     IEnumerator LandingGear()

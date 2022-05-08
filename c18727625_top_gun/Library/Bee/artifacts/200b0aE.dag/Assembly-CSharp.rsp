@@ -337,6 +337,7 @@
 "Assets/HeroController.cs"
 "Assets/MeshGenerator.cs"
 "Assets/Missile.cs"
+"Assets/ObstacleAvoidance.cs"
 "Assets/Pursue.cs"
 "Assets/Scripts/Boid.cs"
 "Assets/Scripts/Change_path.cs"
