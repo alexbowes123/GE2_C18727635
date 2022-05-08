@@ -63,12 +63,25 @@ public class HeroController : MonoBehaviour
 { 
     // Start is called before the first frame update
 
+
+    public GameObject c1;
+    public GameObject c2;
+
+
+    
+
     void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.name == "change_path")
         {
+            c1.GetComponent<Camera>().enabled = false;
+            c2.GetComponent<Camera>().enabled = true;
             
             GetComponent<StateMachine>().ChangeState(new WanderState());
+
+        
+            // GetComponent<TakeOffCam>().enabled = false;
+            // GetComponent<FollowHero>().enabled = true;
         }
     
         else if (col.tag == "Missile")
@@ -126,6 +139,16 @@ public class HeroController : MonoBehaviour
 
     void Start()
     {
+
+        c1 = GameObject.Find("TakeOffCam");
+        c2 = GameObject.Find("FollowHero");
+ 
+
+        c1.GetComponent<Camera>().enabled =true;
+        c2.GetComponent<Camera>().enabled = false;
+
+        
+
         GetComponent<StateMachine>().ChangeState(new TakeOffState());
         StartCoroutine(LandingGear());
     }
