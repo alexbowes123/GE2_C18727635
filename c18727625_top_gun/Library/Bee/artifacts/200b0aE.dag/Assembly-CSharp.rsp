@@ -331,6 +331,7 @@
 "Assets/BadGuyController.cs"
 "Assets/Constrain.cs"
 "Assets/Fighter.cs"
+"Assets/Flare.cs"
 "Assets/FollowPath.cs"
 "Assets/GenerateInfinite.cs"
 "Assets/GenerateWaves.cs"

@@ -65,8 +65,10 @@ public class ObstacleAvoidance : SteeringBehaviour
         for (int i = 0; i < feelers.Length; i++)
         {
             FeelerInfo info = feelers[i];
+     
             if (info.collided)
             {
+                // Debug.Log("Coll"+info.collided);
                 force += CalculateSceneAvoidanceForce(info);
             }
         }
@@ -81,6 +83,18 @@ public class ObstacleAvoidance : SteeringBehaviour
 
         RaycastHit info;
         bool collided = Physics.SphereCast(transform.position, feelerRadius, direction, out info, depth, mask.value);
+        //detect collision with a missile in sphere
+        // if(collided)
+        if(collided && info.transform.gameObject.tag == "Missile")
+        {
+            Debug.Log("collide with "+info.transform.gameObject);
+            Debug.Log("Missile in range");
+
+            //DEPLOY FLARES
+            GameObject flare = GameObject.Instantiate(GetComponent<Fighter>().flare, transform.position + transform.forward * 2, transform.rotation);
+            flare.transform.parent = transform;
+        }
+        
         Vector3 feelerEnd = collided ? info.point : (transform.position + direction * depth);
         feelers[feelerNum] = new FeelerInfo(feelerEnd, info.normal
             , collided, feelerType);

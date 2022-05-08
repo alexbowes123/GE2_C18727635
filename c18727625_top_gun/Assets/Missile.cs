@@ -41,9 +41,26 @@ public class Missile : MonoBehaviour
         while (timePassed < 6)
         {
             // Code to go left here
-            Debug.Log("Time is"+timePassed);
-             transform.position += (target.transform.position - transform.position).normalized * speed * Time.deltaTime;
-            timePassed += Time.deltaTime;
+            // Debug.Log("Time is"+timePassed);
+
+            //get child of name "Flare"
+
+            Transform flareChild = target.transform.Find("Flare(Clone)");
+
+            if(flareChild != null)
+            {
+                Debug.Log("Found flare at "+flareChild.transform.position);
+                transform.position += (flareChild.transform.position - transform.position).normalized * speed * Time.deltaTime;
+                timePassed += Time.deltaTime;
+            }
+            else
+            {
+                transform.position += (target.transform.position - transform.position).normalized * speed * Time.deltaTime;
+                timePassed += Time.deltaTime;
+
+            }
+
+     
 
             if(Vector3.Distance(target.transform.position, transform.position) < 0.3f)
             {
