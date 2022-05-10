@@ -49,7 +49,6 @@ public class Missile : MonoBehaviour
 
             if(flareChild != null)
             {
-                Debug.Log("Found flare at "+flareChild.transform.position);
                 transform.position += (flareChild.transform.position - transform.position).normalized * speed * Time.deltaTime;
                 timePassed += Time.deltaTime;
             }
@@ -76,19 +75,5 @@ public class Missile : MonoBehaviour
         // GameObject explode1 = GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
     }
 
-    // public IEnumerator Homing()
-    // {
-    //     while(Vector3.Distance(target.transform.position, transform.position) > 1.0f)
-    //     {
-    //         // Debug.Log(transform.name +"is at "+transform.position);
-    //         //
-            
-    //         transform.position += (target.transform.position - transform.position).normalized * speed * Time.deltaTime;
-    //         // transform.LookAt(target.transform);
-    //         yield return null;
-    //     }
-    //     Destroy(this.gameObject);
-
-
-    // }
+   
 }

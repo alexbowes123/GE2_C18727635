@@ -7,10 +7,7 @@ class TakeOffState: State
    
     public override void Enter()
     {
-        Debug.Log("Hi I'm in takeoff!");
-        Debug.Log("state is "+owner.GetComponent<StateMachine>().currentState);
         owner.GetComponent<FollowPath>().enabled = true;
-     
     }
     public override void Exit()
     {   
@@ -59,13 +56,57 @@ class WanderState: State
     }
 }
 
+
+public class Alive:State
+{
+    public override void Think()
+    {
+
+        if (owner.GetComponent<Fighter>().health <= 0)
+        {
+            Dead dead = new Dead();
+            owner.ChangeState(dead);
+            owner.SetGlobalState(dead);
+            return;
+        }
+
+        if (owner.GetComponent<Fighter>().health <= 2)
+        {
+            // owner.ChangeState(new FindHealth());
+            Debug.Log("Need health");
+            return;
+        }
+        
+        if (owner.GetComponent<Fighter>().ammo <= 0)
+        {
+            // owner.ChangeState(new FindAmmo());
+            Debug.Log("Need Ammo");
+            return;
+        }
+    }
+}
+
+public class Dead:State
+{
+    public override void Enter()
+    {
+        SteeringBehaviour[] sbs = owner.GetComponent<Boid>().GetComponents<SteeringBehaviour>();
+        foreach(SteeringBehaviour sb in sbs)
+        {
+            sb.enabled = false;
+        }
+        owner.GetComponent<StateMachine>().enabled = false;        
+    }         
+}
+
+
 public class HeroController : MonoBehaviour
 { 
     // Start is called before the first frame update
 
 
-    public GameObject c1;
-    public GameObject c2;
+    public GameObject cam1;
+    public GameObject cam2;
 
 
     
@@ -74,8 +115,8 @@ public class HeroController : MonoBehaviour
     {
         if(col.gameObject.name == "change_path")
         {
-            c1.GetComponent<Camera>().enabled = false;
-            c2.GetComponent<Camera>().enabled = true;
+            cam1.GetComponent<Camera>().enabled = false;
+            cam2.GetComponent<Camera>().enabled = true;
             
             GetComponent<StateMachine>().ChangeState(new WanderState());
 
@@ -86,16 +127,18 @@ public class HeroController : MonoBehaviour
     
         else if (col.tag == "Missile")
         {
-            // if (GetComponent<Fighter>().health > 0)
-            // {            
-            //     GetComponent<Fighter>().health --;
-            // }
-            // Destroy(c.gameObject);
-            // if (GetComponent<StateMachine>().currentState.GetType() != typeof(Dead))
-            // {
-            //     GetComponent<StateMachine>().ChangeState(new DefendState());    
-            // }
             Debug.Log("Damage taken!");
+
+             if (GetComponent<Fighter>().health > 0)
+            {            
+                GetComponent<Fighter>().health --;
+            }
+          
+            if (GetComponent<StateMachine>().currentState.GetType() != typeof(Dead))
+            {
+                // GetComponent<StateMachine>().ChangeState(new DefendState());   
+                Debug.Log("Stand up for yourself!");
+            }
         }
     }
 
@@ -140,16 +183,17 @@ public class HeroController : MonoBehaviour
     void Start()
     {
 
-        c1 = GameObject.Find("TakeOffCam");
-        c2 = GameObject.Find("FollowHero");
+        cam1 = GameObject.Find("TakeOffCam");
+        cam2 = GameObject.Find("FollowHero");
  
 
-        c1.GetComponent<Camera>().enabled =true;
-        c2.GetComponent<Camera>().enabled = false;
+        cam1.GetComponent<Camera>().enabled =true;
+        cam2.GetComponent<Camera>().enabled = false;
 
         
 
         GetComponent<StateMachine>().ChangeState(new TakeOffState());
+        GetComponent<StateMachine>().SetGlobalState(new Alive());  
         StartCoroutine(LandingGear());
     }
 

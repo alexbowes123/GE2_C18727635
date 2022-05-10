@@ -21,7 +21,7 @@ public class Fighter : MonoBehaviour
             if(ammo <= 0.0f)
             {
                 ammo++;
-                Debug.Log("Reloaded, current ammo is "+ammo);
+                // Debug.Log("Reloaded, current ammo is "+ammo);
             }
             yield return new WaitForSeconds(5.0f);
         }
@@ -34,7 +34,7 @@ public class Fighter : MonoBehaviour
             if(flareCount <= 0.0f)
             {
                 flareCount++;
-                Debug.Log("Reloaded, current flare is "+flareCount);
+                // Debug.Log("Reloaded, current flare is "+flareCount);
             }
             yield return new WaitForSeconds(8.0f);
         }

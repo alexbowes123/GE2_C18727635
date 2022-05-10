@@ -90,10 +90,28 @@ public class ObstacleAvoidance : SteeringBehaviour
             Debug.Log("collide with "+info.transform.gameObject);
             Debug.Log("Missile in range");
 
+            Debug.Log("Missile count is" + GetComponent<Fighter>().flareCount);
+
+
+
             //DEPLOY FLARES
-            GameObject flare = GameObject.Instantiate(GetComponent<Fighter>().flare, transform.position + transform.forward * 2, transform.rotation);
-            flare.transform.parent = transform;
+
+            // if(GetComponent<Fighter>().flareCount >=1)
+            // {
+                GameObject flare = GameObject.Instantiate(GetComponent<Fighter>().flare, transform.position + transform.forward * 2, transform.rotation);
+                flare.transform.parent = transform;
+            // }
+            // else
+            // {
+            //     Debug.Log("Still reloading flare");
+            // }
+
+            
+
+
+
         }
+
         
         Vector3 feelerEnd = collided ? info.point : (transform.position + direction * depth);
         feelers[feelerNum] = new FeelerInfo(feelerEnd, info.normal
@@ -129,31 +147,11 @@ public class ObstacleAvoidance : SteeringBehaviour
         }
     }
 
-    // IEnumerator CoolOff(GameObject sphere)
-    // {
-      
-    //     sphere.material.color = Color.HSVToRGB(120, 100,50);
 
-        
-    //     yield return new WaitForSeconds(2.0f);
-    // }
-    
 
     Vector3 CalculateSceneAvoidanceForce(FeelerInfo info)
     {
         Vector3 force = Vector3.zero;
-
-
-        //PLANNED TO ADD COLOUR LERPING TO SHOW NEMAT FLASHING WHEN COLLIDING
-        //DID NOT IMPLEMENT IT IN TIME
-
-        foreach (Renderer b in this.GetComponentsInChildren<Renderer>())
-            {
-                // b.material.color = Color.HSVToRGB(0, 100,100);
-                // StartCoroutine(CoolOff(b));
-
-            }
-      
 
         Vector3 fromTarget = fromTarget = transform.position - info.point;
         float dist = Vector3.Distance(transform.position, info.point);

@@ -17,7 +17,10 @@ public class Flare : MonoBehaviour
         float timePassed = 0;
         while (timePassed < 3)
         {
+            // Debug.Log("Almost deleteing");
+            timePassed += Time.deltaTime;
             yield return null;
+
         }
 
         Debug.Log("Flare Gone");
