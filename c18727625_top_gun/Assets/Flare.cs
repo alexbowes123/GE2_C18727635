@@ -5,7 +5,7 @@ using UnityEngine;
 public class Flare : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public void onEnable()
     {
         StartCoroutine(FlareLife());
     }
@@ -13,20 +13,20 @@ public class Flare : MonoBehaviour
     IEnumerator FlareLife()
     {
         yield return new WaitForSeconds(1);
+    
  
         float timePassed = 0;
         while (timePassed < 3)
         {
-            // Debug.Log("Almost deleteing");
+         
             timePassed += Time.deltaTime;
-            yield return null;
-
+            Debug.Log(timePassed);
+            
         }
 
         Debug.Log("Flare Gone");
         Destroy(this.gameObject);
+    
     }
-
-
 
 }

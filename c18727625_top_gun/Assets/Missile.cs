@@ -50,11 +50,15 @@ public class Missile : MonoBehaviour
             if(flareChild != null)
             {
                 transform.position += (flareChild.transform.position - transform.position).normalized * speed * Time.deltaTime;
+                transform.LookAt(flareChild.transform);
+                transform.Rotate(0,0,90);
                 timePassed += Time.deltaTime;
             }
             else
             {
                 transform.position += (target.transform.position - transform.position).normalized * speed * Time.deltaTime;
+                // transform.LookAt(target.transform);
+                // transform.Rotate(0,0,90);
                 timePassed += Time.deltaTime;
 
             }

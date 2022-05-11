@@ -5,7 +5,7 @@ using UnityEngine;
 public class NoiseWander : SteeringBehaviour
 {
     public float frequency = 0.1f;
-    public float radius = 10.0f;
+    public float radius = 30.0f;
 
     public float theta = 0;
     public float amplitude = 80;
