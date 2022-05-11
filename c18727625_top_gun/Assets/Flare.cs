@@ -21,6 +21,8 @@ public class Flare : MonoBehaviour
          
             timePassed += Time.deltaTime;
             Debug.Log(timePassed);
+
+            yield return null;
             
         }
 

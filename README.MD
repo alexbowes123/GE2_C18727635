@@ -7,6 +7,8 @@
 - TU856
 - A recreation of the famous music video from the movie Top Gun. This video shows a fighter jet on a warship taking off and then battling enemy jets while the song Danger Zone plays.
 
+# Video of Project
+Video demo available here: https://www.youtube.com/watch?v=qJfphBaKNvQ
 # Events Summary
 
 1. Hero Jets takes off from Warship/ Music starts
@@ -43,9 +45,26 @@
 9. FINAL - Heroes win and come in for a landing on the carrier.
 ![1-hero jet on ](/storyboard/final-landing.png)
 
+# About music in project
 
-# Expanding on idea
-If there is time or the project seems a bit empty, I may add in a sci fi element and add in aliens that attack the jets if that is alright.
+The song used was found here: https://www.youtube.com/watch?v=4awuwMHtn54&t=149s
+
+If the song does not sound like the video, please adjust the pitch at "Carrier_Hero_TakeOffCam_AudioSource" for the song.
+
+# Most Proud of
+I am most proud of the flare system which I implemented, despite it not working as intended. I think it is cool that I gave a jet a form of defence from homing missiles. I am also proud of the other models I created for submarines and artillery weapons which I unfortunately could not implement fully.
+
+
+# States
+FlightAttackState - The BadGuy Jets will target a hero jet and shoot missiles at them when in range.
+Alive - Jets and Carriers have limited health, if their health falls under a certain limit then they will change to the dead state
+Defending - When a jet receives damage from another jet's missile, the enemy is assigned and the victim enters the defending state to fight back
+
+# Behaviours
+Take Off - The jet follows a path that is relative to its base Carrier which goes along the run way and ascends
+Wandering - Jets wander in the sky
+ObstacleAviodance - ObstancleAvoidance is used by the hero when wandering to avoid other jets. This behaviour was modified to also detect missiles that come in range, if this happens then a flare is deployed to detract the missile from the hero.
+
 
 # Models
 The models currently being used will be replaced over time as the author creates new ones in Blender. As of week 6, the models used are taken from the asset store.
@@ -55,5 +74,10 @@ The models currently being used will be replaced over time as the author creates
 ## Models
 https://assetstore.unity.com/packages/3d/vehicles/air/navy-planes-and-carrier-pack-170259
 
+https://assetstore.unity.com/packages/2d/textures-materials/water/stylize-water-texture-153577
+
+
 ## Video for idea
 https://www.youtube.com/watch?v=kUsFWO08CO0
+
+https://www.youtube.com/watch?v=4awuwMHtn54&t=149s

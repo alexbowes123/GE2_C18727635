@@ -11,24 +11,15 @@ public class Missile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Invoke("KillMe", 10);
-        // transform.Rotate(0,90,90);
         StartCoroutine(Homing());
     }
 
-    // public void KillMe()
-    // {
-    //     Destroy(this.gameObject);
-    // }
+
 
     // Update is called once per frame
     void Update()
     {
-        //    transform.Translate(0,  speed * Time.deltaTime,0);
-
-        
-
-       
+   
     }
 
     IEnumerator Homing()
@@ -40,8 +31,7 @@ public class Missile : MonoBehaviour
         float timePassed = 0;
         while (timePassed < 6)
         {
-            // Code to go left here
-            // Debug.Log("Time is"+timePassed);
+           
 
             //get child of name "Flare"
 
@@ -57,8 +47,6 @@ public class Missile : MonoBehaviour
             else
             {
                 transform.position += (target.transform.position - transform.position).normalized * speed * Time.deltaTime;
-                // transform.LookAt(target.transform);
-                // transform.Rotate(0,0,90);
                 timePassed += Time.deltaTime;
 
             }
