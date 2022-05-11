@@ -2,145 +2,119 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-class TakeOffState: State
-{
+// class TakeOffState: State
+// {
    
-    public override void Enter()
-    {
-        owner.GetComponent<FollowPath>().enabled = true;
-    }
-    public override void Exit()
-    {   
-        //leave follow path behaviour after taking off
+//     public override void Enter()
+//     {
+//         owner.GetComponent<FollowPath>().enabled = true;
+//     }
+//     public override void Exit()
+//     {   
+//         //leave follow path behaviour after taking off
 
-        owner.GetComponent<FollowPath>().enabled = false;
-        Debug.Log("BYE TAKEOFF!");
+//         owner.GetComponent<FollowPath>().enabled = false;
+//         Debug.Log("BYE TAKEOFF!");
        
-    }
+//     }
 
-    public override void Think()
-    {
-        //Has their take off path reached the end
+//     public override void Think()
+//     {
+//         //Has their take off path reached the end
 
-        // change to wander behaviour
+//         // change to wander behaviour
        
        
 
       
        
-    }
-}
+//     }
+// }
 
-class WanderState: State
-{
+// class WanderState: State
+// {
    
-    public override void Enter()
-    {
-        owner.GetComponent<NoiseWander>().enabled = true;
-        owner.GetComponent<Constrain>().enabled = true;
-        Debug.Log("Hi I'm in wander!");
+//     public override void Enter()
+//     {
+//         owner.GetComponent<NoiseWander>().enabled = true;
+//         owner.GetComponent<Constrain>().enabled = true;
+//         Debug.Log("Hi I'm in wander!");
      
-    }
-    public override void Exit()
-    {   
-        //leave take off state
+//     }
+//     public override void Exit()
+//     {   
+//         //leave take off state
        
-    }
+//     }
 
-    public override void Think()
-    {
-        //Has their take off path reached the end
+//     public override void Think()
+//     {
+//         //Has their take off path reached the end
 
-        // change to wander behaviour
+//         // change to wander behaviour
        
-    }
-}
+//     }
+// }
 
 
-public class Alive:State
-{
-    public override void Think()
-    {
+// p
+// }
 
-        if (owner.GetComponent<Fighter>().health <= 0)
-        {
-            Dead dead = new Dead();
-            owner.ChangeState(dead);
-            owner.SetGlobalState(dead);
-            return;
-        }
+// public class Dead:State
+// {
+//     float angles;
+//     float radiuss;
+//     float angleSpeed;
+//     float rSpeed;
 
-        if (owner.GetComponent<Fighter>().health <= 2)
-        {
-            // owner.ChangeState(new FindHealth());
-            Debug.Log("Need health");
-            return;
-        }
-        
-        if (owner.GetComponent<Fighter>().ammo <= 0)
-        {
-            // owner.ChangeState(new FindAmmo());
-            Debug.Log("Need Ammo");
-            return;
-        }
-    }
-}
+//     public override void Enter()
+//     {
 
-public class Dead:State
-{
-    float angles;
-    float radiuss;
-    float angleSpeed;
-    float rSpeed;
+//         angles = 0;
+//         radiuss = 10;
+//         angleSpeed = 150;
+//         rSpeed = 0.7f;
+//         angles = Mathf.Max(0, Mathf.PI);
+//         radiuss = Mathf.Max(0, radiuss);
 
-    public override void Enter()
-    {
-
-        angles = 0;
-        radiuss = 10;
-        angleSpeed = 150;
-        rSpeed = 0.7f;
-        angles = Mathf.Max(0, Mathf.PI);
-        radiuss = Mathf.Max(0, radiuss);
-
-        SteeringBehaviour[] sbs = owner.GetComponent<Boid>().GetComponents<SteeringBehaviour>();
-        foreach(SteeringBehaviour sb in sbs)
-        {
-            sb.enabled = false;
-        }
-        owner.GetComponent<StateMachine>().enabled = false;   
-        // owner.GetComponent<Rigidbody>().useGravity = true;     
-    } 
+//         SteeringBehaviour[] sbs = owner.GetComponent<Boid>().GetComponents<SteeringBehaviour>();
+//         foreach(SteeringBehaviour sb in sbs)
+//         {
+//             sb.enabled = false;
+//         }
+//         owner.GetComponent<StateMachine>().enabled = false;   
+//         // owner.GetComponent<Rigidbody>().useGravity = true;     
+//     } 
 
 
-    // When a plane is shot down, nose dive 
+//     // When a plane is shot down, nose dive 
 
-    public override void Think()
-    {
-        angles += Time.deltaTime * angleSpeed;
-        radiuss -= Time.deltaTime * rSpeed;
+//     public override void Think()
+//     {
+//         angles += Time.deltaTime * angleSpeed;
+//         radiuss -= Time.deltaTime * rSpeed;
 
-        //  if (radiuss <= 0)
-        // {
-        //     float x = 0;
-        //     float y = 0;
-        //     float z = 0;
+//         //  if (radiuss <= 0)
+//         // {
+//         //     float x = 0;
+//         //     float y = 0;
+//         //     float z = 0;
 
-        //     owner.transform.position = new Vector3(x, y, z);
-        // }
+//         //     owner.transform.position = new Vector3(x, y, z);
+//         // }
 
-        // else
-        // {
-            float x = radiuss * Mathf.Cos(Mathf.Deg2Rad * angles);
-            float z = radiuss * Mathf.Sin(Mathf.Deg2Rad * angles);
-            float y = 0;
+//         // else
+//         // {
+//             float x = radiuss * Mathf.Cos(Mathf.Deg2Rad * angles);
+//             float z = radiuss * Mathf.Sin(Mathf.Deg2Rad * angles);
+//             float y = 0;
 
-            owner.transform.position = new Vector3(x, y, z);
-        // }
+//             owner.transform.position = new Vector3(x, y, z);
+//         // }
 
-    }
+//     }
       
-}
+// }
 
 
 public class HeroController : MonoBehaviour
@@ -152,6 +126,7 @@ public class HeroController : MonoBehaviour
     public GameObject cam2;
 
     public Carrier myCarrier;
+    public GameObject enemy;
 
     public Vector3 jetScale = new Vector3(10.0f,10.0f,10.0f);
     // public Vector3 jetPos = new Vector3(0.0f,5.0f,-116f);
@@ -177,6 +152,9 @@ public class HeroController : MonoBehaviour
         {
             Debug.Log("Damage taken!");
 
+            enemy = col.transform.parent.gameObject;
+            Debug.Log("Enemy is " + enemy.name);
+
             if(GetComponent<Fighter>().health > 0)
             {            
                 GetComponent<Fighter>().health --;
@@ -188,7 +166,7 @@ public class HeroController : MonoBehaviour
           
             if (GetComponent<StateMachine>().currentState.GetType() != typeof(Dead))
             {
-                // GetComponent<StateMachine>().ChangeState(new DefendState());   
+                GetComponent<StateMachine>().ChangeState(new DefendState());   
                 Debug.Log("Stand up for yourself!");
                 
             }

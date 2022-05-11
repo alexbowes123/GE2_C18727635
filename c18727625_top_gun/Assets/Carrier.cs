@@ -37,13 +37,13 @@ public class Carrier : MonoBehaviour
             if(jetResources >= 15)
             {
                     GameObject newJet = GameObject.Instantiate<GameObject>(jetPrefab, transform.position + jetPos, Quaternion.identity);
-                    // newJet.transform.localScale = jetScale;
+                 
                     newJet.GetComponent<HeroController>().myCarrier = this;
                    
                     newJet.transform.parent = this.transform;
 
-                    GameObject toCam = newJet.transform.FindChild("TakeOffCam").gameObject;
-                    GameObject followCam = newJet.transform.FindChild("FollowHero").gameObject;
+                    GameObject toCam = newJet.transform.Find("TakeOffCam").gameObject;
+                    GameObject followCam = newJet.transform.Find("FollowHero").gameObject;
                     // toCam.GetComponent<AudioListener>().enabled = false;
                     // followCam.GetComponent<AudioListener>().enabled = false;
 
@@ -56,6 +56,16 @@ public class Carrier : MonoBehaviour
             }
             if(subResources >= 15)
             {
+                 GameObject newSub = GameObject.Instantiate<GameObject>(subPrefab, transform.position + jetPos, Quaternion.identity);
+            
+                    newSub.GetComponent<SubController>().myCarrier = this;
+                   
+                    newSub.transform.parent = this.transform;
+
+      
+                
+                    subResources -= 15;
+
 
             }
 

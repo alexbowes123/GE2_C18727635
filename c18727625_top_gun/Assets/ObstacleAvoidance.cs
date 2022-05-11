@@ -98,7 +98,7 @@ public class ObstacleAvoidance : SteeringBehaviour
 
             if(GetComponent<Fighter>().flareCount >=1)
             {
-                // Debug.Log("Creating flare");
+                Debug.Log("Creating flare");
                 GameObject flare = GameObject.Instantiate(GetComponent<Fighter>().flare, transform.position + transform.forward * 2, transform.rotation);
                 flare.transform.parent = transform;
                 // Debug.Log("Created flare");

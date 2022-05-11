@@ -333,6 +333,7 @@
 "Assets/Constrain.cs"
 "Assets/Fighter.cs"
 "Assets/Flare.cs"
+"Assets/Flee.cs"
 "Assets/FollowPath.cs"
 "Assets/GenerateInfinite.cs"
 "Assets/GenerateWaves.cs"
@@ -349,6 +350,9 @@
 "Assets/Scripts/StateMachine.cs"
 "Assets/Scripts/SteeringBehaviour.cs"
 "Assets/Scripts/WaveGenerator.cs"
+"Assets/Seek.cs"
+"Assets/States.cs"
+"Assets/SubController.cs"
 -langversion:9.0
 
 /deterministic
